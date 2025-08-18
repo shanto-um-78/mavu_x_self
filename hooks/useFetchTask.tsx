@@ -6,10 +6,13 @@ const useFetchTask = (taskId: string) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  const apiBaseUrl =
+    process.env.NEXT_PUBLIC_API_BASE_URL ||
+    "https://minipay-api-dev.mavu.work/v1";
   const fetchData = async () => {
     try {
       const response = await fetch(
-        `https://minipay-api-dev.mavu.work/v1/tasks/public-task/${taskId}`,
+        `${apiBaseUrl}/tasks/public-task/${taskId}`,
         {
           method: "GET",
           headers: {
