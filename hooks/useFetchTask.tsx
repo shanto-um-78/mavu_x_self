@@ -17,6 +17,12 @@ const useFetchTask = (taskId: string) => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
+            ...(process.env.NEXT_PUBLIC_MINIPAY_SECRET_TOKEN
+              ? {
+                  "x-minipay-token":
+                    process.env.NEXT_PUBLIC_MINIPAY_SECRET_TOKEN,
+                }
+              : {}),
           },
         }
       );
